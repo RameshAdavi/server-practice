@@ -1,11 +1,12 @@
 require('dotenv').config();
 const express = require('express');
+const fetch = require('node-fetch'); // only if Node <18
 const app = express();
-//const port = 3000;
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
- 
+
 app.get('/', (req, res) => {
   res.send('Hello, World! This is my first server.');
 });
@@ -26,18 +27,17 @@ app.get('/api/time', (req, res) => {
   });
 });
 
-// Add this to your app.js (from https://zero2claude.dev/lesson/7.6)
 app.get('/api/joke', async (req, res) => {
   try {
     const response = await fetch('https://official-joke-api.appspot.com/random_joke');
     const joke = await response.json();
     res.json({ setup: joke.setup, punchline: joke.punchline });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Failed to fetch joke' });
   }
 });
 
-
-app.listen(process.env.PORT, () => {
-  //console.log(`Server running at http://localhost:${port}`);
-  console.log('Server Running on Render ')});
+app.listen(PORT, () => {
+  console.log(`Server running on Render at port ${PORT}`);
+});
