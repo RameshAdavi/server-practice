@@ -41,7 +41,7 @@ app.get('/api/joke', async (req, res) => {
 //  console.log(`Server running on Render at port ${PORT}`);
 //});
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server bound to internal port ${PORT}. Public URL is handled by Render.`);
 });
 // Made changes on 19th Aug, 2026 to suit deployment on Render. Removed one PORT 
