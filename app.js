@@ -42,7 +42,6 @@ app.get('/api/joke', async (req, res) => {
 //  console.log(`Server running on Render at port ${PORT}`);
 //});
 
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server bound to internal port ${PORT}. Public URL is handled by Render.`);
 });
