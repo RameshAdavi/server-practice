@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const fetch = require('node-fetch'); // only if Node <18
+//const fetch = require('node-fetch'); // only if Node <18
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -38,6 +38,12 @@ app.get('/api/joke', async (req, res) => {
   }
 });
 
+//app.listen(PORT, () => {
+//  console.log(`Server running on Render at port ${PORT}`);
+//});
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on Render at port ${PORT}`);
+  console.log(`Server bound to internal port ${PORT}. Public URL is handled by Render.`);
 });
+// Made changes on 19th Aug, 2026 to suit deployment on Render
